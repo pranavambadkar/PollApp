@@ -1,0 +1,315 @@
+<title>View Polls</title>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+	<section class="container">
+		<a href="{% url 'create' %}" class="create"><i class="bx bx-plus"></i><span>Create Poll</span>
+		</a>
+	<div class="header">
+		<h3>Recent Polls</h3>
+	</div>
+	{% for p in poll %}
+		<div class="poll_card">
+			<div class="content">
+				<div class="img">
+					<i class="fa-solid fa-chart-bar"></i>
+				</div>
+				<div class="text">
+					<h2><a href="{% url 'vote' p.id %}">{{ p.question }}</a></h2>
+					<span>{{ p.created_at|date:"F j, Y" }}</span>
+				</div>
+				<div class="mobile-button">
+					<a href="{% url 'results' p.id %}"><i class='bx bxs-bar-chart-alt-2'></i></a>
+					<a href="{% url 'confirm' p.id %}" class="rem"><i class='bx bxs-trash' ></i></a>
+				</div>
+			</div>
+			<div class="content_buttons">
+				<a href="{% url 'results' p.id %}" class="list-button"><i class='bx bxs-bar-chart-alt-2'></i><span>Results</span></a>
+				<a href="{% url 'confirm' p.id %}" class="list_button1"><i class='bx bxs-trash' ></i><span class="delete">Delete</span></a>
+			</div>
+		</div>
+	{% endfor %}
+	</section>
+	<style>
+		body{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-top: 50px;
+			padding: 10px;
+		}
+
+		footer{
+			display: none;
+		}
+
+		.container{
+			margin-top: 30px;
+			position: relative;
+			min-height: 600px;
+			min-width: 910px;
+			width: 100%;
+			background: transparent;
+			padding: 10px;
+			text-align: left;
+		}
+
+		.poll_card{
+			width: 100%;
+			display: flex;
+			padding: 15px;
+			/* background: rgba(0, 0, 0, 0.1); */
+			background: #36373b;
+			border-radius: 10px;
+			margin: 15px 0;
+			justify-content: space-between;
+			cursor: pointer;
+			transition: 0.5s;
+		}
+		
+		.poll_card:hover{
+			border: 1px solid #29fd53;
+			box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+			/* box-shadow: -15px 30px 50px rgba(0, 0, 0, 0.5); */
+			/* transform: scale(1.15) translateX(2px) translateY(-10px); */
+			z-index: 1000;	
+		}	
+
+		.content{
+			display: flex;
+		}
+
+		.content .img{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.content .img i{
+			width: 60px;
+			font-size: 2.2rem;
+			margin-left: 0.8rem;
+			padding: 10px;
+			color: rgba(82, 22, 138);
+			background: rgba(216, 205, 226);
+			border-radius: 10px;
+		}
+
+		.content .text{
+			margin-left: 1.5rem;
+		}
+
+		.content .text h2{
+			font-size: 18px;
+		}
+
+		.content .text h2 a{
+			color: #fff;
+		}
+
+		.content .text span{
+			color: rgba(116, 112, 112);
+			font-size: 14px;
+		}
+
+
+		.content_buttons{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			text-align: right;
+		}
+
+		.create{
+			display: flex;
+			align-items: center;
+			height: 40px;
+			width: 150px;
+			border: 1px solid transparent;
+			border-radius: 8px;
+			background: white;
+			cursor: pointer;
+			margin-bottom: 20px;
+		}
+
+		.create:hover{
+			background-color: #29fd53;
+		}
+
+		.create i{
+			font-size: 23px;
+			margin-right: 2px;
+			color: black;
+			margin-left: 10px;
+		}
+
+		.create span{
+			color: #fff;
+			font-size: 15px;
+			font-weight: 600;
+			color: black;
+		}
+
+		.list-button{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 32px;
+			width: 110px;
+			color: black;
+			padding: 5px 10px;
+			border-radius: 17px;
+			background-color: #fff;
+			cursor: pointer;
+			margin-right: 15px;
+		}
+		
+		.list-button i{
+			font-size: 14px;
+			margin-right: 4px;
+			color: black;
+			margin-left: 3px;
+		}
+
+		.list-button span{
+			color: #fff;
+			font-size: 14px;
+			font-weight: 600;
+			color: black;
+		}
+
+		.list-button:hover{
+			background-color: #29fd53;
+		}
+
+		.list_button1{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 32px;
+			width: 110px;
+			color: black;
+			padding: 5px 10px;
+			border-radius: 17px;
+			background-color: #fff;
+			cursor: pointer;
+			margin-right: 15px;
+		}
+		
+		.list_button1 i{
+			font-size: 14px;
+			margin-right: 4px;
+			color: black;
+			margin-left: 3px;
+		}
+
+		.list_button1 span{
+			font-size: 14px;
+			font-weight: 600;
+			color: black;
+		}
+
+		.list_button1:hover{
+			background-color: #f67271;
+		}
+
+		.mobile-button{
+			display: none;
+		}
+
+		@media(max-width: 960px){
+			.container{
+				min-width: 600px;
+			}
+		}
+
+		@media(max-width: 640px){
+			.container{
+				width: 100%;
+				min-width: 50px;
+			}
+
+			.create{
+				width: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+
+			.container .poll_card{
+				padding: 18px;
+				border-radius: 18px;
+				position: relative;
+			}
+
+			.container .poll_card:hover{
+				border: none;
+			}
+
+			.content .img i{
+				margin-left: 0.2rem;
+			}
+
+			.content .text{
+				margin-left: 1rem;
+			}
+
+			.list-button{
+				display: none
+			}
+
+			.list_button1{
+				display: none;
+			}
+
+			.mobile-button{
+				position: absolute;
+ 				bottom: 0;
+				right: 0;
+  				display: flex;
+  				align-items: flex-end;
+				padding-bottom: 10px;
+				padding-right: 10px;
+			}
+
+			.mobile-button i{
+				font-size: 22px;
+				margin-right: 10px;
+				color: #fff;
+			}
+
+			.mobile-button .rem i{
+				color: #f67271;
+			}
+
+			.mobile-button:nth-child(3):hover{
+				background:  transparent;
+			}
+
+			.mobile-button:nth-child(4){
+				background: rgba(220, 38, 37);
+			}
+
+			.mobile-button:nth-child(4) i{
+				color: white;
+			}
+
+			.mobile-button:nth-child(4) span{
+				color: white;
+			}
+		}
+
+		@media(max-width: 520px){
+			body{
+				margin-top: -860px;
+			}
+			.container{
+				margin-top: 950px;
+			}
+
+			
+		}	
+	</style>
+	<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+	<script src="https://kit.fontawesome.com/ce18349790.js" crossorigin="anonymous"></script>
+{% endblock %}

@@ -1,0 +1,208 @@
+<title>Live Demo Poll</title>
+{% extends 'base.html' %}
+{% block content %}
+	<h1>Experience Live Poll</h1>
+	<section class="container">
+		<h2>How would you rate your overall experience with a PollApp?</h2>
+		<p>Make your choice:</p>
+		<div class="form">
+			<form method="POST">
+				{% csrf_token %}
+				<div class="radio-item">
+					<input type="radio" name="poll" value="option1" id="radio1" required><label for="radio1">Excellent</label>
+				</div>
+				<div class="radio-item">
+					<input type="radio" name="poll" value="option2" id="radio2"><label for="radio2">Good</label>
+				</div>
+				<div class="radio-item">
+					<input type="radio" name="poll" value="option3" id="radio3"><label for="radio3">Poor</label>
+				</div>
+
+				<div class="total">Total votes: <strong>{{ poll.total }}</strong></div>
+
+				<div class="btn-align">
+				<button type="submit"><i class="fa-solid fa-hand-pointer"></i>Vote</button>
+				<button type="submit" class="result_button"><i class="fa-solid fa-chart-simple"></i><a href="{% url 'demoresult' %}">Show results</a></button>
+				</div>
+			</form>
+		</div>
+	</section>
+					
+	<style>
+		body{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 16px;
+			margin-top: 90px;
+		}
+
+		footer{
+			margin-top: 200px;
+		}
+
+		.container{
+			margin-top: 40px;
+			position: relative;
+			min-height: 300px;
+			min-width: 200px;
+			max-width: 650px;
+			width: 100%;
+			background: transparent;
+			border: 2px solid rgba(255, 255, 255, .5);
+			border-radius: 30px;
+			padding: 40px;
+			box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+			margin-bottom: 200px;
+		}
+
+		.container h2{
+			text-align: left;
+			margin-bottom: 26px;
+		}
+
+		.container p{
+			margin-bottom: 15px;
+			text-align: left;
+		}
+
+		.radio-item [type="radio"]{
+			display: none;
+		}
+
+		.radio-item + .radio-item{
+			margin-top: 15px;
+		}
+
+		.radio-item label{
+			display: block;
+			padding: 14px 60px;
+			background: #36373b;
+			border: 2px solid #3f484f;
+			border-radius: 11px;
+			cursor: pointer;
+			width: 100%;
+			height: 60px;
+			font-size: 18px;
+			white-space: nowrap;
+			position: relative;
+			text-align: left;
+			transition: .4s ease-in-out 0s;
+			margin-bottom: 12px;
+		}
+
+		.radio-item label:after,
+		.radio-item label:before{
+			content: "";
+			position: absolute;
+			border-radius: 50%;
+		}
+
+		.radio-item label:after{
+			height: 19px;
+			width: 19px;
+			border: 2px solid #fff;
+			left: 20px;
+			top: calc(50% - 12px);
+		}
+
+		.radio-item label:before{
+			background: #29fd53;
+			height: 11px;
+			width: 11px;
+			left: 25.5px;
+			top: calc(50% - 6px);
+			transform: scale(5);
+			opacity: 0;
+			visibility: hidden;
+			transition: .4s ease-in-out 0s;
+		}
+
+		.radio-item [type="radio"]:checked ~ label{
+			border-color: #29fd53;
+		}
+
+		.radio-item [type="radio"]:checked ~ label:before{
+			opacity: 1;
+			visibility: visible;
+			transform: scale(1);
+		}
+
+		.total{
+			text-align: left;
+			margin-top: 30px;
+		}
+
+		button{
+			margin-top: 20px;
+			width: 200px;
+			height: 40px;
+			background: #29fd53;
+			border: none;
+			outline: none;
+			border-radius: 11px;
+			cursor: pointer;
+			margin-right: 10px;
+			font-size: 16px;
+			transition: all 0.2s;
+		}
+
+		button a{
+			color: black;
+		}
+
+		button i{
+			margin-right: 8px;
+		}
+
+		button:hover{
+			background-color: #06c156;
+		}
+		
+		.result_button{
+			background: #fff;
+		}
+
+		.result_button:hover{
+			background-color: #5889f0;
+		}
+
+		.btn-align{
+			display: flex;
+			align-items: left;
+		}
+
+		@media (max-width: 585px){
+			body{
+		        		margin-top: 90px;
+		    	}
+
+		    	h1{
+		        		font-size: 28px;
+		    	}
+
+			.container{
+				min-width: 50px;
+				width: 100%;
+				border-radius: 18px;
+				padding: 18px;
+				padding-top: 22px;
+			}
+
+			.container h2{
+			    font-size: 22px;
+			}
+		}
+
+		@media (max-width: 520px){
+			button{
+				width: 100%;
+			}
+
+			.btn-align{
+				display: inherit;
+			}
+		}
+	</style>
+	<script src="https://kit.fontawesome.com/ce18349790.js" crossorigin="anonymous"></script>
+{% endblock %}

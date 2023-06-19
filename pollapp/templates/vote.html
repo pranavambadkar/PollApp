@@ -1,0 +1,190 @@
+<title>Vote</title>
+{% extends 'base.html' %}
+{% block content %}
+	<section class="container">
+		<h2>{{poll.question}}</h2>	
+		<p>Make your choice:</p>
+		<div class="form">
+			<form method="POST">
+				{% csrf_token %}
+				<div class="radio-item">
+					<input type="radio" name="poll" value="option1" id="radio1" required><label for="radio1"> {{ poll.op1 }} </label>
+				</div>
+				<div class="radio-item">
+					<input type="radio" name="poll" value="option2" id="radio2"><label for="radio2"> {{ poll.op2 }} </label>
+				</div>
+				<div class="radio-item">
+					<input type="radio" name="poll" value="option3" id="radio3"><label for="radio3"> {{ poll.op3 }} </label>
+				</div>
+
+				<div class="btns-align">
+					<button type="submit" class="button1"><i class="fa-solid fa-arrow-left"></i><a href="{% url 'viewpoll' %}">Back</a></button>
+					<button type="submit"><i class="fa-solid fa-hand-pointer"></i>Vote</button>
+				</div>
+			</form>
+		</div>
+	</section>
+
+	<style>
+		body{
+			min-height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 10px;
+		}	
+
+		.container{
+			margin-top: 2px;
+			position: relative;
+			min-height: 300px;
+			min-width: 450px;
+			max-width: 700px;
+			width: 100%;
+			background: transparent;
+			border: 2px solid rgba(255, 255, 255, .5);
+			border-radius: 30px;
+			padding: 40px;
+			box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+		}
+
+		.container h2{
+			text-align: left;
+			margin-bottom: 20px;
+		}
+
+		.container p{
+			margin-bottom: 15px;
+			text-align: left;
+		}
+
+		.radio-item [type="radio"]{
+			display: none;
+		}
+
+		.radio-item + .radio-item{
+			margin-top: 15px;
+		}
+
+		.radio-item label{
+			display: block;
+			padding: 14px 60px;
+			background: #36373b;
+			border: 2px solid #3f484f;
+			border-radius: 11px;
+			cursor: pointer;
+			width: 100%;
+			height: 60px;
+			font-size: 18px;
+			white-space: nowrap;
+			position: relative;
+			text-align: left;
+			transition: .4s ease-in-out 0s;
+			margin-bottom: 12px;
+		}	
+
+		.radio-item label:after,
+		.radio-item label:before{
+			content: "";
+			position: absolute;
+			border-radius: 50%;
+		}
+
+		.radio-item label:after{
+			height: 19px;
+			width: 19px;
+			border: 2px solid #fff;
+			left: 20px;
+			top: calc(50% - 12px);
+		}
+
+		.radio-item label:before{
+			background: #29fd53;
+			height: 11px;
+			width: 11px;
+			left: 25.5px;
+			top: calc(50% - 6px);
+			transform: scale(5);
+			opacity: 0;
+			visibility: hidden;
+			transition: .4s ease-in-out 0s;
+		}
+
+		.radio-item [type="radio"]:checked ~ label{
+			border-color: #29fd53;
+		}
+
+		.radio-item [type="radio"]:checked ~ label:before{
+			opacity: 1;
+			visibility: visible;
+			transform: scale(1);
+		}
+
+		button{
+			margin-top: 20px;
+			width: 150px;
+			height: 40px;
+			background: #29fd53;
+			border: none;
+			outline: none;
+			border-radius: 11px;
+			cursor: pointer;
+			margin-right: 10px;
+			font-size: 16px;
+			transition: all 0.2s;
+		}
+
+		button a{
+			color: black;
+		}
+
+		button i{
+			margin-right: 8px;
+		}
+
+		button:hover{
+			background-color: #06c156;
+		}
+
+		.button1{
+			background: #fff;
+		}
+
+		.button1 i{
+			margin-right: 8px;
+		}
+
+		.button1:hover{
+			background-color: #5889f0;
+		}
+
+		.btns-align{
+			display: flex;
+			align-items: left;
+		}
+
+		@media (max-width: 585px){
+			.container{
+				min-width: 50px;
+				width: 100%;
+				border: none;
+				box-shadow: none;
+				padding: 14px;
+				margin-top: 20px;
+			}
+
+		}
+
+		@media (max-width: 630px){
+			button{
+				width: 100%;
+				max-width: 500px;
+			}
+
+			.btns-align{
+				display: inherit;
+			}
+		}	
+	</style>
+	<script src="https://kit.fontawesome.com/ce18349790.js" crossorigin="anonymous"></script>
+{% endblock %}

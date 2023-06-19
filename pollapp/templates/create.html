@@ -1,0 +1,137 @@
+<title>Create a Poll</title>
+{% extends 'base.html' %}
+{% block content %}
+	<section class="container">
+		<h1>Create a Poll</h1>
+		<div class="form">
+			<form method="POST">
+				{% csrf_token %}
+				<div class="input-box">
+					 <label>Poll Question</label>
+					<input type="text" name="question" placeholder="Type your question here" minlength="5" required />
+				</div>
+
+				<div class="input-box">
+					<label>Answer Options</label>
+					<input type="text" name="op1" placeholder="Option 1" minlength="2" required />
+				</div>
+
+				<div class="input-box">
+					<input type="text" name="op2" placeholder="Option 2" minlength="2" required />
+				</div>
+
+				<div class="input-box">
+					<input type="text" name="op3" placeholder="Option 3" minlength="2" required />
+				</div>
+
+				<button type="submit">Create Poll</button>
+			</form>
+		</div>
+	</section>
+
+	<style>
+		body{
+			min-height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 10px;
+		}
+
+		footer{
+			margin-top: 160px;
+		}
+
+		.container{
+			margin-top: 60px;
+			position: relative;
+			min-width: 550px;
+			max-width: 700px;
+			width: 100%;
+			background: transparent;
+			border: 2px solid rgba(255, 255, 255, .5);
+			padding: 40px;
+			border-radius: 30px;
+			box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+		}
+
+		.container h1{
+			font-size: 1.8rem;
+			font-weight: 700;
+			text-align: center;
+		}
+
+		.container .form{
+			margin-top: 30px;
+		}
+
+		.form .input-box{
+			width: 100%;
+			margin-top: 20px;
+		}
+
+		.input-box label{
+			float: left;
+		}
+
+		::placeholder{
+			color: #808080;
+			font-size: 14px;
+			font-weight: normal;
+		}
+		
+		.form .input-box input{
+			position: relative;
+			height: 50px;
+			width: 100%;
+			outline: none;
+			font-size: 16px;
+			color: #fff;
+			background: #36373b;
+			margin-top: 8px;
+			border: 2px solid #3f484f;
+			border-radius: 11px;
+			padding: 0 15px;
+			transition: all 0.5s;
+		}
+
+		.form .input-box input:focus{
+			border: 1px solid #29fd53;
+			box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+		}
+
+		button{
+			margin-top: 30px;
+			width: 100%;
+			height: 45px;
+			background: #fff;
+			border: none;
+			outline: none;
+			border-radius: 11px;
+			cursor: pointer;
+			font-size: 16px;
+			font-weight: 500;
+			transition: all 0.2s;
+		}
+
+		button:hover{
+			background-color: #29fd53;
+		}
+
+		@media (max-width: 450px){
+			.container{
+				border: 0;
+				background: #22232 7;
+				box-shadow: none;
+				padding: 12px;
+			}
+		}
+
+		@media(max-width: 650px){
+			.container{
+				min-width: 300px;
+			}
+		}
+	</style>
+
+{% endblock %}

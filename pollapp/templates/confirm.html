@@ -1,0 +1,154 @@
+<title>Confirm Deletion</title>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+	<div class="popup_container">
+		{% if poll.creator == request.user %}
+		<div class="popup">
+			<img class="popup_img" src="{% static 'trash.png' %}">
+			<div class="popup_content">
+				<h1>Are you sure?</h1>
+				<p>
+					Do you really want to delete this poll? This process cannot be undone.
+				</p>
+				<div class="group_btns">
+					<button class="popup_button"><a href="{% url 'viewpoll' %}">Cancel</a></button>
+					<button class="popup_button"><a href="{% url 'deletepoll' poll.id %}">Delete</button>
+				</div>		
+			</div>
+		</div>
+		{% else %}
+		<div class="popup">
+			<img class="warning_img" src="{% static 'error_img.png' %}">
+			<div class="popup_content">
+				<h1>Access Denied!</h1>
+				<p>
+					You are not allowed to delete this poll. The poll can only be deleted by its creator.
+				</p>
+				<div class="group_btns">
+					<button class="back_button"><a href="{% url 'viewpoll' %}">Back</a></button>
+				</div>		
+			</div>
+		</div>
+		{% endif %}	
+	</div>
+
+	<style>
+		body{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 20px;
+		}
+
+		footer{
+			display: none;
+		}
+
+		.popup_container{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, .2);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			oveflow: hidden;
+			color: black;
+		}
+
+		.popup{
+			width: 360px;
+			background-color: white;
+			padding: 40px 25px;
+			border-radius: 15px;
+			box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+			text-align: center;
+			position: relative;
+			transition: .3s ease;
+			transform: translateY(10%);
+		}
+
+		.popup_img{
+			width: 124px;
+			margin-bottom: 10px;
+		}
+
+		.warning_img{
+			width: 155px;
+		}
+
+		.popup_content h1{
+			font-size: 28px;
+			margin-bottom: 10px;
+		}
+
+		.popup_content p{
+			font-size: 14px;
+			margin-bottom: 20px;
+		}
+
+		.group_btns{
+			margin-bottom: 8px;
+		}
+
+		.popup_button{
+			width: 100px;
+			height: 35px;
+			border-radius: 12px;
+			border: none;
+			margin: 10px;
+			cursor: pointer;
+		}
+
+		.popup_button:hover{
+			background-color: #c0ced8;
+		}
+
+		.popup_button a{
+			color: inherit;
+		}
+
+		.popup_button:nth-child(2){
+			background-color: rgba(219, 38, 37);
+			color: white;
+		}
+
+		.popup_button:nth-child(2):hover{
+			background-color: #c93334;
+		}
+
+		.back_button{
+			width: 140px;
+			height: 35px;
+			border-radius: 12px;
+			border: none;
+			margin: 10px;
+			cursor: pointer;
+		}
+
+		.back_button:hover{
+			background-color: #c0ced8;
+		}
+
+		.back_button a{
+			color: black;
+		}
+
+		@media screen and (max-width: 520px) {
+			.popup_container{
+				align-items: flex-end;
+			}
+
+			.popup{
+				width: 100%;
+				padding: 40px 30px;
+				border: 18px;
+			}
+		}
+	</style>
+
+	<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+{% endblock %}

@@ -1,0 +1,190 @@
+<title>Live Demo Poll</title>
+{% extends 'base.html' %}
+{% block content %}
+	<h1>Experience Live Poll</h1>
+	<section class="container">
+		<h2>{{ poll.ques }}</h2>
+		<div class="progress-container">
+			<h4>{{ poll.option_one }}</h4>
+			<div class="progress-bar">
+				<span class="bar-one">({{ poll.option_one_count }} votes)</span>
+			</div>
+		</div>
+		<div class="progress-container">
+			<h4>{{ poll.option_two }}</h4>
+			<div class="progress-bar">
+				<span class="bar-two">({{ poll.option_two_count }} votes)</span>
+			</div>
+		</div>
+		<div class="progress-container">
+			<h4>{{ poll.option_three }}</h4>
+			<div class="progress-bar">
+				<span class="bar-three">({{ poll.option_three_count }} votes)</span>
+			</div>
+		</div>
+
+		<div class="total">Total votes: <strong>{{ poll.total }}</strong></div>
+		<div class="btn-align">
+			<button type="submit"><i class="fa-solid fa-arrow-left"></i><a href="{% url 'demo' %}">Back to poll</a></button>
+		</div>
+	</section>
+
+	<style>
+		body{
+			min-height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 16px;
+			margin-top: 60px;
+		}
+
+		footer{
+			margin-top: 200px;
+		}
+
+		.container{
+			margin-top: 40px;
+			position: relative;
+			min-height: 300px;
+			min-width: 200px;
+			max-width: 650px;
+			width: 100%;
+			background: transparent;
+			border: 2px solid rgba(255, 255, 255, .5);
+			border-radius: 30px;
+			padding: 40px;
+			box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+		}
+
+		.container h2{
+			text-align: left;
+			margin-bottom: 30px;
+		}
+
+		.container .progress-container{
+			margin-bottom: 25px;
+		}
+
+		.container .progress-container h4{
+			margin-bottom: 8px;
+			letter-spacing: .5px;
+			text-align: left;
+		}
+
+		.container .progress-container .progress-bar{
+			position: relative;
+			width: 100%;
+			height: 30px;
+			border-radius: 11px;
+			background-color: white;
+			box-shadow: 3px 4px 5px 0px rgba(0, 0, 0, .5);
+		}
+
+		.container .progress-container .progress-bar .bar-one{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			color: black;
+			font-weight: 800;
+			font-size: 16px;
+			line-height: 1.7;
+			text-align: center;
+			border-radius: 11px;
+			background: rgba(50, 222, 132, 1);
+		}
+
+		.container .progress-container .progress-bar .bar-two{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			color: black;
+			font-weight: 800;
+			font-size: 16px;
+			line-height: 1.7;
+			text-align: center;
+			border-radius: 11px;
+			background: #ffc422;
+		}
+
+		.container .progress-container .progress-bar .bar-three{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			color: black;
+			font-weight: 800;
+			font-size: 16px;
+			line-height: 1.7;
+			text-align: center;
+			border-radius: 11px;
+			background: #fe7563;
+		}
+
+		.total{
+			text-align: left;
+		}
+
+		button{
+			margin-top: 20px;
+			width: 100%;
+			max-width: 200px;
+			height: 40px;
+			border: none;
+			outline: none;
+			border-radius: 11px;
+			cursor: pointer;
+			font-size: 16px;
+			transition: all 0.2s;
+		}
+
+		button i{
+			margin-right: 10px;
+		}
+
+		button a{
+			color: black;
+		}
+
+		button:hover{
+			background-color: #5889f0;
+		}
+
+		.btn-align{
+			display: flex;
+			align-items: left;
+		}
+
+		@media(max-width: 520px){
+		    	body{
+		        		margin-top: 50px;
+		    	}
+
+		    	h1{
+		        		font-size: 28px;
+		    	}
+
+		    	.container{
+		        		border-radius: 18px;
+		        		padding: 18px;
+		        		padding-top: 22px;
+		    	}
+
+		    	.container h2{
+		        		font-size: 22px;
+		    	}
+
+			button{
+				width: 100%;
+				max-width: 400px;
+			}
+		}
+
+	</style>
+	<script src="https://kit.fontawesome.com/ce18349790.js" crossorigin="anonymous"></script>
+{% endblock %}
