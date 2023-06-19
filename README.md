@@ -15,4 +15,4 @@ Check out the live demo: https://polllapp.pythonanywhere.com/
 ## Project Outputs
 
 ### Home Page
-![Home](https://github.com/pranavambadkar/PollApp/assets/125912673/2aff41dd-314b-4352-b2cc-f7d0d2bf44fd)
+![image](https://github.com/pranavambadkar/PollApp/assets/125912673/51b2fb81-d7c4-464e-a486-94f14e7b203e)
