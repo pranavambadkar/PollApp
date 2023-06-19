@@ -17,5 +17,8 @@ Check out the live demo: https://polllapp.pythonanywhere.com/
 ### Home Page
 ![image](https://github.com/pranavambadkar/PollApp/assets/125912673/51b2fb81-d7c4-464e-a486-94f14e7b203e)
 
-## Login Page
+### Login Page
+![image](https://github.com/pranavambadkar/PollApp/assets/125912673/ad59e5ec-f5ef-4913-bc9c-4360a394f291)
+
+### Sign Up Page
 
