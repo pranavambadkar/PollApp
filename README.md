@@ -9,6 +9,14 @@ Key Features:
 5) User management and Analytics
 6) Security and privacy
 
+Tech Stack:
+1) HTML5
+2) CSS3
+3) JavaScript
+4) Django
+5) Python
+6) SQLite3
+
 ## Live Demo
 Check out the live demo: https://polllapp.pythonanywhere.com/
 
