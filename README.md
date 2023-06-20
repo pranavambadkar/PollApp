@@ -17,6 +17,8 @@ Check out the live demo: https://polllapp.pythonanywhere.com/
 ### Home Page
 ![image](https://github.com/pranavambadkar/PollApp/assets/125912673/51b2fb81-d7c4-464e-a486-94f14e7b203e)
 
+![image](https://github.com/pranavambadkar/PollApp/assets/125912673/4a36202a-d5f6-44e5-a9e1-62d0835367b5)
+
 ### Login Page
 ![image](https://github.com/pranavambadkar/PollApp/assets/125912673/ad59e5ec-f5ef-4913-bc9c-4360a394f291)
 
@@ -49,6 +51,5 @@ Check out the live demo: https://polllapp.pythonanywhere.com/
 
 ![image](https://github.com/pranavambadkar/PollApp/assets/125912673/80857136-b249-4c9f-9f33-f8c6c49e83ee)
 
+### Change Password
 ![image](https://github.com/pranavambadkar/PollApp/assets/125912673/1846b5ca-d0dc-45a5-8073-ee8359acb272)
-
-![image](https://github.com/pranavambadkar/PollApp/assets/125912673/4a36202a-d5f6-44e5-a9e1-62d0835367b5)
