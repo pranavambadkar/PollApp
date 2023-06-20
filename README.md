@@ -9,7 +9,7 @@ Key Features:
 5) User management and Analytics
 6) Security and privacy
 
-## Demo
+## Live Demo
 Check out the live demo: https://polllapp.pythonanywhere.com/
 
 ## Project Outputs
