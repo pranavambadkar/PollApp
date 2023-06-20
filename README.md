@@ -46,3 +46,9 @@ Check out the live demo: https://polllapp.pythonanywhere.com/
 
 ### Confirmation Page
 ![image](https://github.com/pranavambadkar/PollApp/assets/125912673/03c3c821-1352-40be-a62d-b095dc7e3fcd)
+
+![image](https://github.com/pranavambadkar/PollApp/assets/125912673/80857136-b249-4c9f-9f33-f8c6c49e83ee)
+
+![image](https://github.com/pranavambadkar/PollApp/assets/125912673/1846b5ca-d0dc-45a5-8073-ee8359acb272)
+
+![image](https://github.com/pranavambadkar/PollApp/assets/125912673/4a36202a-d5f6-44e5-a9e1-62d0835367b5)
