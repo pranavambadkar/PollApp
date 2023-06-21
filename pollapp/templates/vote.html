@@ -2,13 +2,13 @@
 {% extends 'base.html' %}
 {% block content %}
 	<section class="container">
-		<h2>{{poll.question}}</h2>	
+		<h2>{{poll.question}}</h2>
 		<p>Make your choice:</p>
 		<div class="form">
-			<form method="POST">
+			<form method="POST" onsubmit="return validateForm()">
 				{% csrf_token %}
 				<div class="radio-item">
-					<input type="radio" name="poll" value="option1" id="radio1" required><label for="radio1"> {{ poll.op1 }} </label>
+					<input type="radio" name="poll" value="option1" id="radio1"><label for="radio1"> {{ poll.op1 }} </label>
 				</div>
 				<div class="radio-item">
 					<input type="radio" name="poll" value="option2" id="radio2"><label for="radio2"> {{ poll.op2 }} </label>
@@ -18,7 +18,7 @@
 				</div>
 
 				<div class="btns-align">
-					<button type="submit" class="button1"><i class="fa-solid fa-arrow-left"></i><a href="{% url 'viewpoll' %}">Back</a></button>
+					<button type="submit" class="button1" onclick="goBack()"><i class="fa-solid fa-arrow-left"></i><a href="{% url 'viewpoll' %}">Back</a></button>
 					<button type="submit"><i class="fa-solid fa-hand-pointer"></i>Vote</button>
 				</div>
 			</form>
@@ -32,7 +32,7 @@
 			align-items: center;
 			justify-content: center;
 			padding: 10px;
-		}	
+		}
 
 		.container{
 			margin-top: 2px;
@@ -81,7 +81,7 @@
 			text-align: left;
 			transition: .4s ease-in-out 0s;
 			margin-bottom: 12px;
-		}	
+		}
 
 		.radio-item label:after,
 		.radio-item label:before{
@@ -184,7 +184,32 @@
 			.btns-align{
 				display: inherit;
 			}
-		}	
+		}
 	</style>
+
+	<script>
+		function validateForm() {
+			var radios = document.getElementsByName("poll");
+			var formValid = false;
+
+			for (var i = 0; i < radios.length; i++) {
+				if (radios[i].checked) {
+					formValid = true;
+					break;
+            				}
+        			}
+
+			if (!formValid) {
+            				alert("Please select at least one option.");
+        			}
+
+			return formValid;
+    		}
+
+    		function goBack() {
+        			window.history.back();
+    		}
+	</script>
+
 	<script src="https://kit.fontawesome.com/ce18349790.js" crossorigin="anonymous"></script>
 {% endblock %}
