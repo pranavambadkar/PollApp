@@ -6,10 +6,10 @@
 		<h2>How would you rate your overall experience with a PollApp?</h2>
 		<p>Make your choice:</p>
 		<div class="form">
-			<form method="POST">
+			<form method="POST" onsubmit="return validateForm()">
 				{% csrf_token %}
 				<div class="radio-item">
-					<input type="radio" name="poll" value="option1" id="radio1" required><label for="radio1">Excellent</label>
+					<input type="radio" name="poll" value="option1" id="radio1"><label for="radio1">Excellent</label>
 				</div>
 				<div class="radio-item">
 					<input type="radio" name="poll" value="option2" id="radio2"><label for="radio2">Good</label>
@@ -27,7 +27,7 @@
 			</form>
 		</div>
 	</section>
-					
+
 	<style>
 		body{
 			display: flex;
@@ -158,7 +158,7 @@
 		button:hover{
 			background-color: #06c156;
 		}
-		
+
 		.result_button{
 			background: #fff;
 		}
@@ -204,5 +204,28 @@
 			}
 		}
 	</style>
-	<script src="https://kit.fontawesome.com/ce18349790.js" crossorigin="anonymous"></script>
+
+<script>
+   function validateForm() {
+        var radios = document.getElementsByName("poll");
+        var formValid = false;
+
+        // Check if any radio button is selected
+        for (var i = 0; i < radios.length; i++) {
+            if (radios[i].checked) {
+                formValid = true;
+                break;
+            }
+        }
+
+        // Show error message if no option is selected
+        if (!formValid) {
+            alert("Please select at least one option.");
+            return false;
+        }
+        return true;
+    }
+</script>
+
+<script src="https://kit.fontawesome.com/ce18349790.js" crossorigin="anonymous"></script>
 {% endblock %}
